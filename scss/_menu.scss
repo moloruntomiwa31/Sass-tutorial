@@ -76,9 +76,27 @@
 
         &___item {
             margin: 10px 0;
+            transform: translateX(100vw);
+            @include transition-ease;
+
+            &.open {
+                transform: translateX(0);
+            }
+            &.active > a {
+                color: $secondary-color;
+            }
+        }
+        &___link {
+            @include transition-ease;
         }
         &.open {
             transform: translateY(0);
         }
     }
+}
+
+@for $i from 1 through 4 {
+    .menu-nav___item:nth-child(#{$i}) {
+        transition-delay: ($i * 0.1s) + 0.15s;
+     }
 }
